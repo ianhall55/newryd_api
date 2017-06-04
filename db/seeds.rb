@@ -15,6 +15,6 @@ User.create!(
   password: 'password',
   first_name: 'ian',
   last_name: 'hall',
-  user_type: 'admin'
+  user_type: 'admin',
   car_id: 1
 )

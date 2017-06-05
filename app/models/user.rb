@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   has_secure_password
 
-  validates :phone_number, :email, :password_digest, :session_token, presence: true
+  validates :phone_number, :email, :password_digest, presence: true
   validates :phone_number, :email, uniqueness: true
 
   attr_reader :password
@@ -15,7 +15,6 @@ class User < ActiveRecord::Base
       pot_user = User.find_by_email(options[:email])
     end
     pot_user
-    
   end
 
   # def password=(password)

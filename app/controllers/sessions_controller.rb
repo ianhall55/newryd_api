@@ -1,47 +1,38 @@
-class SessionsController < ApplicationController
-
-  def create
-    phone_number = params[:user][:phone_number]
-    email = params[:user][:email]
-    if phone_number
-  		@user = User.find_by_creds_phone(
-        phone_number,
-        params[:user][:password]
-      )
-    elsif email
-      @user = User.find_by_creds_email(
-        email,
-        params[:user][:password]
-      )
-    else
-      render(
-        json: ["Must provide email or phone number"],
-        status: 401
-      )
-      return
-    end
-
-    if @user
-			login(@user)
-			render json: @user
-		else
-			render(
-        json: ["Invalid username/password combination"],
-        status: 401
-      )
-		end
-	end
-
-	def destroy
-		@user = current_user
-		if @user
-			logout(@user)
-			render :partial => "users/show"
-		else
-			render(
-        json: ["Nobody signed in"],
-        status: 404
-      )
-		end
-	end
-end
+# class SessionsController < ApplicationController
+#
+#   def create
+# 		@user = User.find_by_creds(
+#       email: params[:user][:email],
+#       phone_number: params[:user][:phone_number],
+#       password: params[:user][:password]
+#     )
+#
+#     auth_token =
+#       AuthenticateUser.new(auth_params[:email], auth_params[:password]).call
+#     json_response(auth_token: auth_token)
+#
+#     if @user
+# 			login(@user)
+# 			render json: @user
+# 		else
+# 			render(
+#         json: ["Invalid username/password combination"],
+#         status: 401
+#       )
+# 		end
+# 	end
+#
+# 	def destroy
+# 		@user = current_user
+#
+# 		if @user
+# 			logout(@user)
+# 			render json: @user
+# 		else
+# 			render(
+#         json: ["Nobody signed in"],
+#         status: 404
+#       )
+# 		end
+# 	end
+# end

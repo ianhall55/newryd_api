@@ -1,14 +1,29 @@
-class Api::SessionsController < ApplicationController
+class SessionsController < ApplicationController
 
   def create
-		@user = User.find_by_credentials(
-      params[:user][:username],
-      params[:user][:password]
-    )
+    phone_number = params[:user][:phone_number]
+    email = params[:user][:email]
+    if phone_number
+  		@user = User.find_by_creds_phone(
+        phone_number,
+        params[:user][:password]
+      )
+    elsif email
+      @user = User.find_by_creds_email(
+        email,
+        params[:user][:password]
+      )
+    else
+      render(
+        json: ["Must provide email or phone number"],
+        status: 401
+      )
+      return
+    end
 
     if @user
 			login(@user)
-			render "api/users/show"
+			render json: @user
 		else
 			render(
         json: ["Invalid username/password combination"],
@@ -21,7 +36,7 @@ class Api::SessionsController < ApplicationController
 		@user = current_user
 		if @user
 			logout(@user)
-			render "api/users/show"
+			render :partial => "users/show"
 		else
 			render(
         json: ["Nobody signed in"],

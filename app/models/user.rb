@@ -31,10 +31,15 @@ class User < ActiveRecord::Base
     self.session_token
   end
 
-  def self.find_by_credentials(username, password)
-    pot_user = User.find_by_username(username)
+  def self.find_by_creds_phone(phone_number, password)
+    pot_user = User.find_by_phone_number(phone_number)
     return nil unless pot_user
     pot_user.is_password?(password) ? pot_user : nil
   end
 
+  def self.find_by_creds_email(email, password)
+    pot_user = User.find_by_email(email)
+    return nil unless pot_user
+    pot_user.is_password?(password) ? pot_user : nil
+  end
 end

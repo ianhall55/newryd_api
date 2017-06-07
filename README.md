@@ -6,7 +6,7 @@ post request to '/signup'
 
   sample request:
 
-```json
+```javascript
   {
     "user": {
       "first_name": "first",
@@ -21,7 +21,7 @@ post request to '/signup'
 
 sample response:
 
-```json
+```javascript
 {
   "message": "Account created successfully",
   "auth_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjp7ImlkIjoxMiwiZmlyc3RfbmFtZSI6ImZpcnN0IiwibGFzdF9uYW1lIjoibGFzdCIsImVtYWlsIjoidGVzdDhAbmV3cnlkLmNvbSIsInBob25lX251bWJlciI6Ijg4ODg4ODg4ODgiLCJ1c2VyX3R5cGUiOiJjdXN0b21lciJ9LCJleHAiOjE0OTc0MDUwNzN9.C6RjEQnbk7WBZtkp5D6NWFiH16fLaNEImYvOS3W7r7w"
@@ -42,7 +42,7 @@ post request to '/login'
 can use email or phone_number and password in request
 
 sample requests:
-```json
+```javascript
 {
 	"user": {
 		"email": "ian@test.com",
@@ -58,7 +58,7 @@ sample requests:
 }
 ```
 sample response:
-```json
+```javascript
 {
   "message": "Logged in successfully",
   "auth_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjp7ImlkIjoxLCJmaXJzdF9uYW1lIjoiaWFuIiwibGFzdF9uYW1lIjoiaGFsbCIsImVtYWlsIjoiaWFuQHRlc3QuY29tIiwicGhvbmVfbnVtYmVyIjoiMTExMTExMTExMSIsInVzZXJfdHlwZSI6ImFkbWluIn0sImV4cCI6MTQ5NzQwNDU0Nn0.ceW5u7ZDiATTUESuNoRmfKROUNllqjC32DC7ZpS4lUM"

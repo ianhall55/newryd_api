@@ -7,7 +7,9 @@ class AuthenticateUser
 
   # Service entry point
   def call
-    JsonWebToken.encode(user_id: user.id) if user
+    user = verify_user
+    token = JsonWebToken.encode(user: UserSerializer.new(user)) if user
+    return token
   end
 
   private
@@ -15,7 +17,7 @@ class AuthenticateUser
   attr_reader :email, :phone_number, :password
 
   # verify user credentials
-  def user
+  def verify_user
     user = User.find_by_creds(email: email, phone_number: phone_number)
     return user if user && user.authenticate(password)
     # raise Authentication error if credentials are invalid

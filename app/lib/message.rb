@@ -19,6 +19,10 @@ class Message
     'Unauthorized request'
   end
 
+  def self.successful_login
+    'Logged in successfully'
+  end
+
   def self.account_created
     'Account created successfully'
   end

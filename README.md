@@ -1,24 +1,74 @@
-# README
+# newryd_api
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# User creation
 
-Things you may want to cover:
+post request to '/signup'
 
-* Ruby version
+  sample request:
 
-* System dependencies
+```json
+  {
+    "user": {
+      "first_name": "first",
+      "last_name": "last",
+      "email": "test5@newryd.com",
+      "phone_number": "5555555555",
+      "password": "password",
+      "user_type": "customer"
+    }
+  }
+```
 
-* Configuration
+sample response:
 
-* Database creation
+```json
+{
+  "message": "Account created successfully",
+  "user": {
+    "id": 9,
+    "first_name": "first",
+    "last_name": "last",
+    "email": "test5@newryd.com",
+    "phone_number": "5555555555",
+    "session_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo5LCJleHAiOjE0OTczMjc4NTh9.4JRhvI9r62sa6gFl9IRqAmOVvVFJh0Z6ytsGPQrvbGk",
+    "user_type": "customer"
+  }
+}
+```
 
-* Database initialization
+put session_token in 'Authorization' header to authenticate future requests
 
-* How to run the test suite
+# Login
 
-* Services (job queues, cache servers, search engines, etc.)
+post request to '/login'
 
-* Deployment instructions
+can use email or phone_number and password in request
 
-* ...
+sample requests:
+```json
+{
+	"user": {
+		"email": "ian@test.com",
+		"password": "password"
+	}
+}
+
+{
+	"user": {
+		"phone_number": "1111111111",
+		"password": "password"
+	}
+}
+```
+sample response:
+```json
+{
+  "id": 1,
+  "first_name": "ian",
+  "last_name": "hall",
+  "email": "ian@test.com",
+  "phone_number": "1111111111",
+  "session_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE0OTczMjgxODB9.wKUvRRFhPyjDutpSCErZbBTSVN4l3avRzrODGk5uEak",
+  "user_type": "admin"
+}
+```

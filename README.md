@@ -32,6 +32,8 @@ store auth_token in local storage on device
 put auth_token in 'Authorization' header to authenticate future requests
 
 the token is divided into 3 sections, the middle section is the user info encoded in base64 format
+decode to access info
+can use https://jwt.io/ to see decoded token
 
 # Login
 

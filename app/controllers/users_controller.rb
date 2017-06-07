@@ -7,10 +7,15 @@ class UsersController < ApplicationController
   end
 
   def create
-    user = User.create!(user_params)
-    authenticated_user = AuthenticateUser.new(user.email, user.phone_number, user.password).call
-    response = { message: Message.account_created, user: UserSerializer.new(authenticated_user) }
-    json_response(response, :created)
+    @user = User.new(user_params)
+
+    if @user.save!
+      auth_token = AuthenticateUser.new(@user.email, @user.phone_number, @user.password).call
+      response = { message: Message.account_created, auth_token: auth_token }
+      json_response(response, :created)
+    else
+      render json: @user.errors.full_messages
+    end
   end
 
 	private

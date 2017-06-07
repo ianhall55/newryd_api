@@ -24,19 +24,14 @@ sample response:
 ```json
 {
   "message": "Account created successfully",
-  "user": {
-    "id": 9,
-    "first_name": "first",
-    "last_name": "last",
-    "email": "test5@newryd.com",
-    "phone_number": "5555555555",
-    "session_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo5LCJleHAiOjE0OTczMjc4NTh9.4JRhvI9r62sa6gFl9IRqAmOVvVFJh0Z6ytsGPQrvbGk",
-    "user_type": "customer"
-  }
+  "auth_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjp7ImlkIjoxMiwiZmlyc3RfbmFtZSI6ImZpcnN0IiwibGFzdF9uYW1lIjoibGFzdCIsImVtYWlsIjoidGVzdDhAbmV3cnlkLmNvbSIsInBob25lX251bWJlciI6Ijg4ODg4ODg4ODgiLCJ1c2VyX3R5cGUiOiJjdXN0b21lciJ9LCJleHAiOjE0OTc0MDUwNzN9.C6RjEQnbk7WBZtkp5D6NWFiH16fLaNEImYvOS3W7r7w"
 }
 ```
+store auth_token in local storage on device
 
-put session_token in 'Authorization' header to authenticate future requests
+put auth_token in 'Authorization' header to authenticate future requests
+
+the token is divided into 3 sections, the middle section is the user info encoded in base64 format
 
 # Login
 
@@ -63,12 +58,11 @@ sample requests:
 sample response:
 ```json
 {
-  "id": 1,
-  "first_name": "ian",
-  "last_name": "hall",
-  "email": "ian@test.com",
-  "phone_number": "1111111111",
-  "session_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE0OTczMjgxODB9.wKUvRRFhPyjDutpSCErZbBTSVN4l3avRzrODGk5uEak",
-  "user_type": "admin"
+  "message": "Logged in successfully",
+  "auth_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjp7ImlkIjoxLCJmaXJzdF9uYW1lIjoiaWFuIiwibGFzdF9uYW1lIjoiaGFsbCIsImVtYWlsIjoiaWFuQHRlc3QuY29tIiwicGhvbmVfbnVtYmVyIjoiMTExMTExMTExMSIsInVzZXJfdHlwZSI6ImFkbWluIn0sImV4cCI6MTQ5NzQwNDU0Nn0.ceW5u7ZDiATTUESuNoRmfKROUNllqjC32DC7ZpS4lUM"
 }
 ```
+
+# Logout
+
+to log user out, remove auth token from local storage and throw away

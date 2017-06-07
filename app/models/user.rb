@@ -14,4 +14,15 @@ class User < ActiveRecord::Base
     end
     pot_user
   end
+
+  def to_json
+    {
+      id: id,
+      first_name: first_name,
+      last_name: last_name,
+      email: email,
+      phone_number: phone_number,
+      user_type: user_type
+    }
+  end
 end

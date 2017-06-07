@@ -8,7 +8,7 @@ class AuthenticateUser
   # Service entry point
   def call
     user = verify_user
-    token = JsonWebToken.encode(user: UserSerializer.new(user)) if user
+    token = JsonWebToken.encode(user: user.to_json) if user
     return token
   end
 

@@ -42,19 +42,23 @@ post request to '/login'
 can use email or phone_number and password in request
 
 sample requests:
+
+email
 ```javascript
 {
-	"user": {
-		"email": "ian@test.com",
-		"password": "password"
-	}
+    "user": {
+	"email": "ian@test.com",
+	"password": "password"
+    }
 }
-
+```
+phone_number
+```javascript
 {
-	"user": {
-		"phone_number": "1111111111",
-		"password": "password"
-	}
+    "user": {
+	"phone_number": "1111111111",
+	"password": "password"
+    }
 }
 ```
 sample response:

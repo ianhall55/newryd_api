@@ -1,6 +1,16 @@
 class User < ActiveRecord::Base
   has_secure_password
 
+  belongs_to :current_car,
+    class_name: 'Car',
+    primary_key: :id,
+    foreign_key: :car_id
+
+  has_many :car_histories,
+    class_name: 'CarHistory',
+    primary_key: :id,
+    foreign_key: :user_id
+
   validates :phone_number, :email, :password_digest, presence: true
   validates :phone_number, :email, uniqueness: true
 

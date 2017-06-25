@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170619052234) do
+ActiveRecord::Schema.define(version: 20170621033016) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,17 @@ ActiveRecord::Schema.define(version: 20170619052234) do
     t.boolean  "current",       default: false, null: false
     t.index ["car_id"], name: "index_car_histories_on_car_id", using: :btree
     t.index ["user_id"], name: "index_car_histories_on_user_id", using: :btree
+  end
+
+  create_table "car_rentals", force: :cascade do |t|
+    t.integer  "user_id",           null: false
+    t.integer  "car_id"
+    t.string   "status",            null: false
+    t.integer  "type_id",           null: false
+    t.integer  "price_tier_id",     null: false
+    t.datetime "rental_start_date", null: false
+    t.index ["car_id"], name: "index_car_rentals_on_car_id", using: :btree
+    t.index ["user_id"], name: "index_car_rentals_on_user_id", using: :btree
   end
 
   create_table "cars", force: :cascade do |t|
@@ -45,6 +56,12 @@ ActiveRecord::Schema.define(version: 20170619052234) do
     t.string  "name"
     t.string  "instructions"
     t.integer "user_id",      null: false
+  end
+
+  create_table "price_tiers", force: :cascade do |t|
+    t.string  "description"
+    t.decimal "start_price", null: false
+    t.decimal "end_price",   null: false
   end
 
   create_table "types", force: :cascade do |t|

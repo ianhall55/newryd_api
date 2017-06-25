@@ -72,3 +72,72 @@ sample response:
 # Logout
 
 to log user out, remove auth token from local storage and throw away
+
+# Car History
+
+to get the car history for a user
+
+type: GET
+address: /users/car_history
+params: auth token in Authorization header
+sample response:
+```javascript
+[
+  {
+    "id": 1,
+    "car": {
+      "id": 1,
+      "make": "Honda",
+      "model": "Civic",
+      "vin": "12345",
+      "year": "2004",
+      "color": "red",
+      "license_plate": "abc123",
+      "mileage": 40000,
+      "type_id": 1
+    },
+    "rental_start": "2017-06-19T05:28:55.761Z",
+    "rental_finish": "2017-06-19T05:28:55.802Z",
+    "current": false
+  },
+  {
+    "id": 3,
+    "car": {
+      "id": 3,
+      "make": "BMW",
+      "model": "M3",
+      "vin": "67890",
+      "year": "2010",
+      "color": "black",
+      "license_plate": "xyz890",
+      "mileage": 85000,
+      "type_id": 1
+    },
+    "rental_start": "2017-06-19T05:28:55.798Z",
+    "rental_finish": null,
+    "current": true
+  }
+]
+```
+
+# Current car
+
+to get current car for user
+
+type: GET
+address: /users/current_car
+params: auth token in Authorization header
+sample response:
+```javascript
+{
+  "id": 3,
+  "make": "BMW",
+  "model": "M3",
+  "vin": "67890",
+  "year": "2010",
+  "color": "black",
+  "license_plate": "xyz890",
+  "mileage": 85000,
+  "type_id": 1
+}
+```

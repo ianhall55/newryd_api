@@ -4,10 +4,8 @@ Rails.application.routes.draw do
   post 'signup', to: 'users#create'
 
   get 'users', to: 'users#index'
-
   get 'users/current_car', to: 'users#current_car'
-
   get 'users/car_history', to: 'users#car_history'
 
-  resources 'cars'
+  post 'car_rentals', to: 'car_rentals#request_rental'
 end

@@ -11,6 +11,10 @@ class User < ActiveRecord::Base
     primary_key: :id,
     foreign_key: :user_id
 
+  has_many :cars,
+    through: :car_histories
+
+
   validates :phone_number, :email, :password_digest, presence: true
   validates :phone_number, :email, uniqueness: true
 

@@ -18,6 +18,24 @@ class UsersController < ApplicationController
     end
   end
 
+  def current_car
+    @car = current_user.current_car
+    if @car
+      render json: @car
+    else
+      render json: { message: 'User does not currently have a rental car' }
+    end
+  end
+
+  def car_history
+    @car_histories = current_user.car_histories.includes(:car)
+    if @car_histories
+      render json: @car_histories
+    else
+      render json: { message: 'User does not have any previous rentals' }
+    end
+  end
+
 	private
 
 	def user_params

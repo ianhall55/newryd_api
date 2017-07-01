@@ -26,6 +26,9 @@ gem "active_model_serializers"
 gem "better_errors"
 gem "binding_of_caller"
 
+# braintree payments
+gem "braintree"
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

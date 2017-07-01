@@ -78,8 +78,11 @@ to log user out, remove auth token from local storage and throw away
 to get the car history for a user
 
 type: GET
+
 address: /users/car_history
+
 params: auth token in Authorization header
+
 sample response:
 ```javascript
 [
@@ -125,8 +128,11 @@ sample response:
 to get current car for user
 
 type: GET
+
 address: /users/current_car
+
 params: auth token in Authorization header
+
 sample response:
 ```javascript
 {
@@ -147,8 +153,11 @@ sample response:
 to get car types
 
 type: GET
+
 address: /cars/car_types
+
 params: none
+
 sample response:
 ```javascript
 [
@@ -180,8 +189,11 @@ sample response:
 to get car classes
 
 type: GET
+
 address: /cars/car_classes
+
 params: none
+
 sample response:
 ```javascript
 [
@@ -209,8 +221,11 @@ sample response:
 to get car price tiers
 
 type: GET
+
 address: /cars/price_tiers
+
 params: none
+
 sample response:
 ```javascript
 [
@@ -250,6 +265,7 @@ address: /cars/price_tiers
 
 params: type_id, class_id, price_tier_id, rental_start_date
 *** Logged in user must be activated! ***
+
 sample request:
 ```json
 {

@@ -240,3 +240,28 @@ sample response:
   }
 ]
 ```
+
+# Car Rentals, create rental request
+to get car price tiers
+
+type: GET
+address: /cars/price_tiers
+params: type_id, class_id, price_tier_id, rental_start_date
+*** Logged in user must be activated! ***
+sample request:
+```json
+{
+  "car_rental": {
+  	"type_id": 2,
+  	"class_id": 2,
+  	"price_tier_id": 2,
+  	"rental_start_date": "2017-07-01 14:05:00 -0700"
+  }
+}
+```
+Successful response
+```json
+{
+  "message": "Rental request created!"
+}
+```

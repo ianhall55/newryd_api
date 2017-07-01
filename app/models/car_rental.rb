@@ -1,20 +1,22 @@
 class CarRental < ActiveRecord::Base
   validates :user_id, :type_id, :class_id, :price_tier_id, :rental_start_date, presence: true
 
-  before_create :set_user
-
   belongs_to :user
-  belongs_to :car
-  belongs_to :car_type
-  belongs_to :car_class
-  belongs_to :price_tier
+  # belongs_to :car
 
+  belongs_to :car_type,
+    class_name: 'CarType',
+    primary_key: :id,
+    foreign_key: :type_id
 
-  def set_user
-    if current_user && current_user.activated
-      user_id = current_user.id
-    else
-      errors.add(:user, "User must be logged in and activated")
-    end
-  end
+  belongs_to :car_class,
+    class_name: 'CarClass',
+    primary_key: :id,
+    foreign_key: :class_id
+
+  belongs_to :price_tier,
+    class_name: 'PriceTier',
+    primary_key: :id,
+    foreign_key: :price_tier_id
+
 end

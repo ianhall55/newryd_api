@@ -15,7 +15,8 @@
   password: 'password',
   first_name: 'Ian',
   last_name: 'Hall',
-  user_type: 'admin'
+  user_type: 'admin',
+  activated: true
 )
 
 @user2 = User.create!(
@@ -162,3 +163,15 @@
   start_price: 1400.0,
   end_price: 2000.0
 )
+
+
+# Car rental test
+
+# @car_rental = CarRental.create!(
+#   user_id: @user1.id,
+#   car_id: 1,
+#   type_id: @car_type1.id,
+#   class_id: @car_class1.id,
+#   price_tier_id: @price_tier1.id,
+#   rental_start_date: Time.now
+# )

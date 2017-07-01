@@ -2,11 +2,23 @@ class CarRentalsController < ApplicationController
 
   def request_rental
     @rental = CarRental.new(car_rental_params)
+    @rental.user_id = set_current_user
 
-    if @rental.save
-      render json: { message: "Rental request created!"}
-    else
+    debugger
+    if @rental.errors.messages.present? || !@rental.save
       render json: @rental.errors.full_messages
+    else
+      render json: { message: "Rental request created!"}
+    end
+  end
+
+  private
+
+  def set_current_user
+    if current_user && current_user.activated
+      return current_user.id
+    else
+      @rental.errors.add(:user, "User must be logged in and activated")
     end
   end
 

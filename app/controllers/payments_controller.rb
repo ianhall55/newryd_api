@@ -3,7 +3,7 @@ class PaymentsController < ApplicationController
 
   def client_token
     @token = Braintree::ClientToken.generate
-    render json: @token
+    render plain: @token
   end
 
   def checkout

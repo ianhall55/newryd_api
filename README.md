@@ -242,10 +242,12 @@ sample response:
 ```
 
 # Car Rentals, create rental request
-to get car price tiers
+to create a rental request
 
 type: GET
+
 address: /cars/price_tiers
+
 params: type_id, class_id, price_tier_id, rental_start_date
 *** Logged in user must be activated! ***
 sample request:

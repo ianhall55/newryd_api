@@ -141,3 +141,102 @@ sample response:
   "type_id": 1
 }
 ```
+
+# Car Types
+
+to get car types
+
+type: GET
+address: /cars/car_types
+params: none
+sample response:
+```javascript
+[
+  {
+    "id": 1,
+    "name": "Luxury",
+    "description": "The car you want when you have a special event\n    or are trying to impress someone"
+  },
+  {
+    "id": 2,
+    "name": "Adventure",
+    "description": "Perfect car for a weekend getaway"
+  },
+  {
+    "id": 3,
+    "name": "Family",
+    "description": "Large, spacious cars. Great for large groups"
+  },
+  {
+    "id": 4,
+    "name": "City",
+    "description": "Smaller cars for navigating cities"
+  }
+]
+```
+
+# Car Classes
+
+to get car classes
+
+type: GET
+address: /cars/car_classes
+params: none
+sample response:
+```javascript
+[
+  {
+    "id": 1,
+    "name": "Sedan",
+    "description": null
+  },
+  {
+    "id": 2,
+    "name": "Coupe",
+    "description": null
+  },
+  {
+    "id": 3,
+    "name": "Sports car",
+    "description": null
+  },
+  ...
+]
+```
+
+# Price Tiers
+
+to get car price tiers
+
+type: GET
+address: /cars/price_tiers
+params: none
+sample response:
+```javascript
+[
+  {
+    "id": 1,
+    "description": "Tier 1",
+    "start_price": "550.0",
+    "end_price": "749.0"
+  },
+  {
+    "id": 2,
+    "description": "Tier 1",
+    "start_price": "750.0",
+    "end_price": "899.0"
+  },
+  {
+    "id": 3,
+    "description": "Tier 1",
+    "start_price": "900.0",
+    "end_price": "1399.0"
+  },
+  {
+    "id": 4,
+    "description": "Tier 1",
+    "start_price": "1400.0",
+    "end_price": "2000.0"
+  }
+]
+```

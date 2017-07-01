@@ -107,3 +107,58 @@
   rental_finish: nil,
   current: true
 )
+
+
+# car types
+@car_type1 = CarType.create!(
+  name: 'Luxury',
+  description: 'The car you want when you have a special event
+    or are trying to impress someone'
+)
+
+@car_type2 = CarType.create!(
+  name: 'Adventure',
+  description: 'Perfect car for a weekend getaway'
+)
+
+@car_type3 = CarType.create!(
+  name: 'Family',
+  description: 'Large, spacious cars. Great for large groups'
+)
+
+@car_type4 = CarType.create!(
+  name: 'City',
+  description: 'Smaller cars for navigating cities'
+)
+
+# car classes
+@car_class1 = CarClass.create!(name: 'Sedan')
+@car_class2 = CarClass.create!(name: 'Coupe')
+@car_class3 = CarClass.create!(name: 'Sports car')
+@car_class4 = CarClass.create!(name: 'Hatchback')
+@car_class5 = CarClass.create!(name: 'Van')
+@car_class6 = CarClass.create!(name: 'Truck')
+@car_class7 = CarClass.create!(name: 'Compact')
+
+# Price tiers
+
+@price_tier1 = PriceTier.create!(
+  description: 'Tier 1',
+  start_price: 550.0,
+  end_price: 749.0
+)
+@price_tier2 = PriceTier.create!(
+  description: 'Tier 1',
+  start_price: 750.0,
+  end_price: 899.0
+)
+@price_tier3 = PriceTier.create!(
+  description: 'Tier 1',
+  start_price: 900.0,
+  end_price: 1399.0
+)
+@price_tier4 = PriceTier.create!(
+  description: 'Tier 1',
+  start_price: 1400.0,
+  end_price: 2000.0
+)

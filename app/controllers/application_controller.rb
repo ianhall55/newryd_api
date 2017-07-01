@@ -12,4 +12,11 @@ class ApplicationController < ActionController::API
   def authorize_request
     @current_user = (AuthorizeApiRequest.new(request.headers).call)[:user]
   end
+
+  def activate_user
+    @current_user.update_attributes!(
+      activated: true,
+      activated_date: Time.now
+    )
+  end
 end

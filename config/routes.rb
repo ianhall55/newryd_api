@@ -12,4 +12,7 @@ Rails.application.routes.draw do
   get 'cars/price_tiers', to: 'price_tiers#index'
 
   post 'car_rentals', to: 'car_rentals#request_rental'
+
+  get 'client_token', to: 'payments#client_token'
+  post 'complete_checkout', to: 'payments#checkout'
 end

@@ -22,6 +22,10 @@ gem 'puma', '~> 3.0'
 # active model serializers
 gem "active_model_serializers"
 
+# better errors
+gem "better_errors"
+gem "binding_of_caller"
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

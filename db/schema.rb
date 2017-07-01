@@ -10,10 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170621033016) do
+ActiveRecord::Schema.define(version: 20170625010727) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "car_classes", force: :cascade do |t|
+    t.string "name",        null: false
+    t.string "description"
+    t.index ["name"], name: "index_car_classes_on_name", unique: true, using: :btree
+  end
 
   create_table "car_histories", force: :cascade do |t|
     t.integer  "user_id",                       null: false
@@ -26,14 +32,21 @@ ActiveRecord::Schema.define(version: 20170621033016) do
   end
 
   create_table "car_rentals", force: :cascade do |t|
-    t.integer  "user_id",           null: false
+    t.integer  "user_id",                               null: false
     t.integer  "car_id"
-    t.string   "status",            null: false
-    t.integer  "type_id",           null: false
-    t.integer  "price_tier_id",     null: false
-    t.datetime "rental_start_date", null: false
+    t.string   "status",            default: "pending", null: false
+    t.integer  "type_id",                               null: false
+    t.integer  "class_id",                              null: false
+    t.integer  "price_tier_id",                         null: false
+    t.datetime "rental_start_date",                     null: false
     t.index ["car_id"], name: "index_car_rentals_on_car_id", using: :btree
     t.index ["user_id"], name: "index_car_rentals_on_user_id", using: :btree
+  end
+
+  create_table "car_types", force: :cascade do |t|
+    t.string "name",        null: false
+    t.string "description", null: false
+    t.index ["name"], name: "index_car_types_on_name", unique: true, using: :btree
   end
 
   create_table "cars", force: :cascade do |t|
@@ -64,23 +77,19 @@ ActiveRecord::Schema.define(version: 20170621033016) do
     t.decimal "end_price",   null: false
   end
 
-  create_table "types", force: :cascade do |t|
-    t.string "name",        null: false
-    t.string "description", null: false
-    t.index ["name"], name: "index_types_on_name", unique: true, using: :btree
-  end
-
   create_table "users", force: :cascade do |t|
-    t.string   "phone_number",    null: false
-    t.string   "email",           null: false
-    t.string   "password_digest", null: false
-    t.string   "first_name",      null: false
-    t.string   "last_name",       null: false
+    t.string   "phone_number",                    null: false
+    t.string   "email",                           null: false
+    t.string   "password_digest",                 null: false
+    t.string   "first_name",                      null: false
+    t.string   "last_name",                       null: false
     t.string   "session_token"
-    t.string   "user_type",       null: false
+    t.string   "user_type",                       null: false
     t.integer  "car_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.boolean  "activated",       default: false, null: false
+    t.datetime "activated_date"
     t.index ["email", "password_digest"], name: "index_users_on_email_and_password_digest", unique: true, using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["phone_number", "password_digest"], name: "index_users_on_phone_number_and_password_digest", unique: true, using: :btree

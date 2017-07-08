@@ -1,6 +1,4 @@
 class CarRentalsController < ApplicationController
-  # alias :read_attribute_for_serialization :send
-
   def request_rental
     @rental = CarRental.new(car_rental_params)
     @rental.user_id = set_current_user
@@ -12,16 +10,19 @@ class CarRentalsController < ApplicationController
     end
   end
 
-  # def confirm_rental
-  #   @rental = CarRental.find(params[:rental_id])
-  #   @car = Car.find(params[:car_id])
-  #   if @rental.present? && @car.present?
-  #     @rental.confirm!(@car)
-  #     render json: @rental
-  #   else
-  #     render json: { message: "Invalid car or rental, rental not confirmed" }
-  #   end
-  # end
+  def confirm_rental
+    @rental = CarRental.find(params[:rental_id])
+    @car = Car.find(params[:car_id])
+
+    # TODO: add logic to check if car is reserved
+
+    if @rental.present? && @car.present?
+      @rental.confirm!(@car)
+      render json: { message: "Rental confirmed!", rental: CarRentalSerializer.new(@rental) }
+    else
+      render json: { message: "Invalid car or rental, rental not confirmed" }
+    end
+  end
 
   def rentals_pending
     @rentals = CarRental.for_user(current_user.id).pending

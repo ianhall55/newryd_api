@@ -1,6 +1,8 @@
 class CarRental < ActiveRecord::Base
   validates :user_id, :type_id, :class_id, :price_tier_id, :rental_start_date, presence: true
 
+  attr_accessor :status
+
   scope :for_user, ->(user_id) { where(user_id: user_id) }
 
   scope :upcoming, ->(now) { where("rental_start_date > ?", now) }
@@ -26,10 +28,9 @@ class CarRental < ActiveRecord::Base
     foreign_key: :price_tier_id
 
   def confirm!(car)
-    update_attributes!(
-      car_id = car.id,
-      status = 'confirmed'
-    )
+    self.car = car
+    self.status = 'confirmed'
+    save!
   end
 
 end

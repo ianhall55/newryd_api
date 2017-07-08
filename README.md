@@ -301,6 +301,55 @@ Successful response
 same as confirmed
 ```
 
+# Confirm Rental
+confirms a pending rental request,
+can use to confirm rental or just to update car for rental
+
+type: POST
+
+address: /car_rentals/confirm
+
+params: rental_id, car_id
+
+successful response
+```json
+{
+  "message": "Rental confirmed!",
+  "rental": {
+    "id": 3,
+    "car": {
+      "id": 3,
+      "make": "BMW",
+      "model": "M3",
+      "vin": "67890",
+      "year": "2010",
+      "color": "black",
+      "license_plate": "xyz890",
+      "mileage": 85000,
+      "type_id": 1
+    },
+    "car_type": {
+      "id": 3,
+      "name": "Family",
+      "description": "Large, spacious cars. Great for large groups"
+    },
+    "car_class": {
+      "id": 3,
+      "name": "Sports car",
+      "description": null
+    },
+    "price_tier": {
+      "id": 3,
+      "description": "Tier 1",
+      "start_price": "900.0",
+      "end_price": "1399.0"
+    },
+    "status": "confirmed",
+    "rental_start_date": "2017-07-28T20:55:51.401Z"
+  }
+}
+```
+
 # Upcoming rentals
 
 # all

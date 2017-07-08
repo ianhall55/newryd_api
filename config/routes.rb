@@ -13,6 +13,8 @@ Rails.application.routes.draw do
 
   post 'car_rentals', to: 'car_rentals#request_rental'
   get 'car_rentals/pending', to: 'car_rentals#rentals_pending'
+  post 'car_rentals/confirm', to: 'car_rentals#confirm_rental'
+
   get 'upcoming_rentals/confirmed', to: 'car_rentals#upcoming_rentals_confirmed'
   get 'upcoming_rentals/all', to: 'car_rentals#upcoming_rentals_all'
 

@@ -167,11 +167,31 @@
 
 # Car rental test
 
-# @car_rental = CarRental.create!(
-#   user_id: @user1.id,
-#   car_id: 1,
-#   type_id: @car_type1.id,
-#   class_id: @car_class1.id,
-#   price_tier_id: @price_tier1.id,
-#   rental_start_date: Time.now
-# )
+@car_rental1 = CarRental.create!(
+  user_id: @user1.id,
+  car_id: @car1.id,
+  type_id: @car_type1.id,
+  class_id: @car_class1.id,
+  price_tier_id: @price_tier1.id,
+  status: 'completed',
+  rental_start_date: 30.days.ago
+)
+
+@car_rental2 = CarRental.create!(
+  user_id: @user1.id,
+  car_id: @car2.id,
+  type_id: @car_type2.id,
+  class_id: @car_class2.id,
+  price_tier_id: @price_tier2.id,
+  status: 'confirmed',
+  rental_start_date: 10.days.from_now
+)
+
+@car_rental3 = CarRental.create!(
+  user_id: @user1.id,
+  type_id: @car_type3.id,
+  class_id: @car_class3.id,
+  price_tier_id: @price_tier3.id,
+  status: 'pending',
+  rental_start_date: 20.days.from_now
+)

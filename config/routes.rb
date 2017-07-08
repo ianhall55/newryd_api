@@ -12,6 +12,10 @@ Rails.application.routes.draw do
   get 'cars/price_tiers', to: 'price_tiers#index'
 
   post 'car_rentals', to: 'car_rentals#request_rental'
+  get 'car_rentals/pending', to: 'car_rentals#rentals_pending'
+  get 'upcoming_rentals/confirmed', to: 'car_rentals#upcoming_rentals_confirmed'
+  get 'upcoming_rentals/all', to: 'car_rentals#upcoming_rentals_all'
+
 
   get 'client_token', to: 'payments#client_token'
   post 'process_checkout', to: 'payments#checkout'

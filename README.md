@@ -256,12 +256,15 @@ sample response:
 ]
 ```
 
-# Car Rentals, create rental request
+# Car Rentals
+
+# Create rental request
+
 to create a rental request
 
 type: POST
 
-address: /cars/price_tiers
+address: /car_rentals
 
 params: type_id, class_id, price_tier_id, rental_start_date
 *** Logged in user must be activated! ***
@@ -282,6 +285,143 @@ Successful response
 {
   "message": "Rental request created!"
 }
+```
+
+# Pending Rentals
+returns all pending future rentals for user
+
+type: GET
+
+address: /car_rentals/pending
+
+params: jwt in auth header
+
+Successful response
+```text
+same as confirmed
+```
+
+# Upcoming rentals
+
+# all
+returns all pending rentals and future confirmed rentals
+
+type: GET
+
+address: /upcoming_rentals/all
+
+params: jwt in auth header
+
+Successful response
+```json
+{
+  "pending": [
+    {
+      "id": 3,
+      "car": null,
+      "car_type": {
+        "id": 3,
+        "name": "Family",
+        "description": "Large, spacious cars. Great for large groups"
+      },
+      "car_class": {
+        "id": 3,
+        "name": "Sports car",
+        "description": null
+      },
+      "price_tier": {
+        "id": 3,
+        "description": "Tier 1",
+        "start_price": "900.0",
+        "end_price": "1399.0"
+      },
+      "status": "pending",
+      "rental_start_date": "2017-07-28T20:55:51.401Z"
+    }
+  ],
+  "confirmed": [
+    {
+      "id": 2,
+      "car": {
+        "id": 2,
+        "make": "Toyota",
+        "model": "Corolla",
+        "vin": "67890",
+        "year": "2010",
+        "color": "blue",
+        "license_plate": "xyz890",
+        "mileage": 85000,
+        "type_id": 2
+      },
+      "car_type": {
+        "id": 2,
+        "name": "Adventure",
+        "description": "Perfect car for a weekend getaway"
+      },
+      "car_class": {
+        "id": 2,
+        "name": "Coupe",
+        "description": null
+      },
+      "price_tier": {
+        "id": 2,
+        "description": "Tier 1",
+        "start_price": "750.0",
+        "end_price": "899.0"
+      },
+      "status": "confirmed",
+      "rental_start_date": "2017-07-18T20:55:51.398Z"
+    }
+  ]
+}
+```
+
+# Confirmed
+returns all confirmed future rentals for user,
+confirmed rentals should have car attached
+
+type: GET
+
+address: /upcoming_rentals/confirmed
+
+params: jwt in auth header
+
+Successful response
+```json
+[
+  {
+    "id": 2,
+    "car": {
+      "id": 2,
+      "make": "Toyota",
+      "model": "Corolla",
+      "vin": "67890",
+      "year": "2010",
+      "color": "blue",
+      "license_plate": "xyz890",
+      "mileage": 85000,
+      "type_id": 2
+    },
+    "car_type": {
+      "id": 2,
+      "name": "Adventure",
+      "description": "Perfect car for a weekend getaway"
+    },
+    "car_class": {
+      "id": 2,
+      "name": "Coupe",
+      "description": null
+    },
+    "price_tier": {
+      "id": 2,
+      "description": "Tier 1",
+      "start_price": "750.0",
+      "end_price": "899.0"
+    },
+    "status": "confirmed",
+    "rental_start_date": "2017-07-18T20:55:51.398Z"
+  }
+]
 ```
 
 # Braintree Payments

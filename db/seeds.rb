@@ -28,6 +28,27 @@
   user_type: 'admin'
 )
 
+# car types
+@car_type1 = CarType.create!(
+  name: 'Luxury',
+  description: 'The car you want when you have a special event or are trying to impress someone'
+)
+
+@car_type2 = CarType.create!(
+  name: 'Adventure',
+  description: 'Perfect car for a weekend getaway'
+)
+
+@car_type3 = CarType.create!(
+  name: 'Family',
+  description: 'Large, spacious cars. Great for large groups'
+)
+
+@car_type4 = CarType.create!(
+  name: 'City',
+  description: 'Smaller cars for navigating cities'
+)
+
 # create_table "cars"
 #   t.string  "make",          null: false
 #   t.string  "model",         null: false
@@ -40,7 +61,6 @@
 #   t.index ["type_id"], name: "index_cars_on_type_id", using: :btree
 # end
 
-
 @car1 = Car.create!(
   make:             'Honda',
   model:            'Civic',
@@ -49,7 +69,7 @@
   color:            'red',
   license_plate:    'abc123',
   mileage:          40000,
-  type_id:          @user1.id
+  type_id:          @car_type1.id
 )
 
 @car2 = Car.create!(
@@ -60,7 +80,7 @@
   color:            'blue',
   license_plate:    'xyz890',
   mileage:          85000,
-  type_id:          @user2.id
+  type_id:          @car_type2.id
 )
 
 @car3 = Car.create!(
@@ -71,7 +91,7 @@
   color:            'black',
   license_plate:    'xyz890',
   mileage:          85000,
-  type_id:          @user1.id
+  type_id:          @car_type3.id
 )
 
 
@@ -109,28 +129,6 @@
   current: true
 )
 
-
-# car types
-@car_type1 = CarType.create!(
-  name: 'Luxury',
-  description: 'The car you want when you have a special event
-    or are trying to impress someone'
-)
-
-@car_type2 = CarType.create!(
-  name: 'Adventure',
-  description: 'Perfect car for a weekend getaway'
-)
-
-@car_type3 = CarType.create!(
-  name: 'Family',
-  description: 'Large, spacious cars. Great for large groups'
-)
-
-@car_type4 = CarType.create!(
-  name: 'City',
-  description: 'Smaller cars for navigating cities'
-)
 
 # car classes
 @car_class1 = CarClass.create!(name: 'Sedan')

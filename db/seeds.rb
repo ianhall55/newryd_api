@@ -7,7 +7,30 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
+# Price tiers
 
+@price_tier1 = PriceTier.create!(
+  description: 'Tier 1',
+  start_price: 550.0,
+  end_price: 749.0
+)
+@price_tier2 = PriceTier.create!(
+  description: 'Tier 2',
+  start_price: 750.0,
+  end_price: 899.0
+)
+@price_tier3 = PriceTier.create!(
+  description: 'Tier 3',
+  start_price: 900.0,
+  end_price: 1399.0
+)
+@price_tier4 = PriceTier.create!(
+  description: 'Tier 4',
+  start_price: 1400.0,
+  end_price: 2000.0
+)
+
+# Users
 
 @user1 = User.create!(
   phone_number: '1111111111',
@@ -16,7 +39,8 @@
   first_name: 'Ian',
   last_name: 'Hall',
   user_type: 'admin',
-  activated: true
+  activated: true,
+  price_tier_id: @price_tier1.id
 )
 
 @user2 = User.create!(
@@ -25,7 +49,8 @@
   password: 'password',
   first_name: 'Alex',
   last_name: 'Mattson',
-  user_type: 'admin'
+  user_type: 'admin',
+  price_tier_id: @price_tier2.id
 )
 
 # car types
@@ -138,30 +163,6 @@
 @car_class5 = CarClass.create!(name: 'Van')
 @car_class6 = CarClass.create!(name: 'Truck')
 @car_class7 = CarClass.create!(name: 'Compact')
-
-# Price tiers
-
-@price_tier1 = PriceTier.create!(
-  description: 'Tier 1',
-  start_price: 550.0,
-  end_price: 749.0
-)
-@price_tier2 = PriceTier.create!(
-  description: 'Tier 1',
-  start_price: 750.0,
-  end_price: 899.0
-)
-@price_tier3 = PriceTier.create!(
-  description: 'Tier 1',
-  start_price: 900.0,
-  end_price: 1399.0
-)
-@price_tier4 = PriceTier.create!(
-  description: 'Tier 1',
-  start_price: 1400.0,
-  end_price: 2000.0
-)
-
 
 # Car rental test
 

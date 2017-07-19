@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'users', to: 'users#index'
   get 'users/current_car', to: 'users#current_car'
   get 'users/car_history', to: 'users#car_history'
+  put 'users/price_tier', to: 'users#update_price_tier'
 
   get 'cars/car_types', to: 'car_types#index'
   get 'cars/car_classes', to: 'car_classes#index'

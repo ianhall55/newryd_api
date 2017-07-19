@@ -1,5 +1,4 @@
 class CarsController < ApplicationController
-
   def index
     @cars = Car.all
     render json: @cars
@@ -20,6 +19,4 @@ class CarsController < ApplicationController
       render json: { message: 'Car not found' }
     end
   end
-
-
 end

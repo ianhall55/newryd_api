@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170625010727) do
+ActiveRecord::Schema.define(version: 20170719034732) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -90,6 +90,7 @@ ActiveRecord::Schema.define(version: 20170625010727) do
     t.datetime "updated_at",                      null: false
     t.boolean  "activated",       default: false, null: false
     t.datetime "activated_date"
+    t.integer  "price_tier_id"
     t.index ["email", "password_digest"], name: "index_users_on_email_and_password_digest", unique: true, using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["phone_number", "password_digest"], name: "index_users_on_phone_number_and_password_digest", unique: true, using: :btree

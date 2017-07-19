@@ -18,6 +18,16 @@ class UsersController < ApplicationController
     end
   end
 
+  def update_price_tier
+    if current_user.update_price_tier(params[:price_tier_id])
+      auth_token =
+        JsonWebToken.encode(user: current_user.to_json)
+      render json: { message: "Update successful", auth_token: auth_token }
+    else
+      render json: { message: "Price Tier update failed" }
+    end
+  end
+
   def current_car
     @car = current_user.current_car
     if @car

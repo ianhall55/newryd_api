@@ -73,6 +73,23 @@ sample response:
 
 to log user out, remove auth token from local storage and throw away
 
+# User Price Tier
+to update the price tier for a user, returns updated auth_token 
+
+type: PUT
+
+address: /users/price_tier
+
+params: price_tier_id in body and auth token in Authorization header
+
+sample response:
+```json
+{
+  "message": "Update successful",
+  "auth_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjp7ImlkIjoxLCJmaXJzdF9uYW1lIjoiSWFuIiwibGFzdF9uYW1lIjoiSGFsbCIsImVtYWlsIjoiaWFuQHRlc3QuY29tIiwicGhvbmVfbnVtYmVyIjoiMTExMTExMTExMSIsInVzZXJfdHlwZSI6ImFkbWluIiwicHJpY2VfdGllciI6eyJpZCI6Mywic3RhcnRfcHJpY2UiOiI5MDAuMCIsImVuZF9wcmljZSI6IjEzOTkuMCIsImRlc2NyaXB0aW9uIjoiVGllciAxIn19LCJleHAiOjE1MDEwNDMyMzR9.VOud04Pb12tvYxeCGiACHxEc7fpoxlHb2D03n1SpXLs"
+}
+```
+
 # Car History
 
 to get the car history for a user

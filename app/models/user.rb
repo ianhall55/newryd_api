@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
   has_many :cars,
     through: :car_histories
 
+  belongs_to :price_tier
 
   validates :phone_number, :email, :password_digest, presence: true
   validates :phone_number, :email, uniqueness: true
@@ -29,6 +30,16 @@ class User < ActiveRecord::Base
     pot_user
   end
 
+  def update_price_tier(price_tier_id)
+    user_price_tier = PriceTier.where(id: price_tier_id).first
+    if user_price_tier
+      self.price_tier = user_price_tier
+      self.save!
+    else
+      false
+    end
+  end
+
   def to_json
     {
       id: id,
@@ -36,7 +47,13 @@ class User < ActiveRecord::Base
       last_name: last_name,
       email: email,
       phone_number: phone_number,
-      user_type: user_type
+      user_type: user_type,
+      price_tier: {
+        id: price_tier.id,
+        start_price: price_tier.start_price,
+        end_price: price_tier.end_price,
+        description: price_tier.description
+      }
     }
   end
 end

@@ -51,7 +51,6 @@ class UsersController < ApplicationController
 	def user_params
 		params
       .require(:user)
-      .permit(:first_name, :last_name, :email, :phone_number, :password, :user_type)
+      .permit(:first_name, :last_name, :email, :phone_number, :password, :user_type, :price_tier_id, :car_id)
 	end
-
 end

@@ -133,9 +133,9 @@
 @car_history1 = CarHistory.create!(
   user_id: @user1.id,
   car_id: @car1.id,
-  rental_start: Time.now,
-  rental_finish: nil,
-  current: true
+  rental_start: 30.days.ago,
+  rental_finish: 20.days.ago,
+  current: false
 )
 
 @car_history2 = CarHistory.create!(
@@ -149,7 +149,7 @@
 @car_history3 = CarHistory.create!(
   user_id: @user1.id,
   car_id: @car3.id,
-  rental_start: Time.now,
+  rental_start: 15.days.ago,
   rental_finish: nil,
   current: true
 )

@@ -10,7 +10,8 @@ class CarRental < ActiveRecord::Base
   scope :confirmed, -> { where(status: 'confirmed') }
 
   belongs_to :user
-  belongs_to :car
+  belongs_to :car,
+    optional: true
 
   belongs_to :car_type,
     class_name: 'CarType',
@@ -32,5 +33,4 @@ class CarRental < ActiveRecord::Base
     self.status = 'confirmed'
     save!
   end
-
 end

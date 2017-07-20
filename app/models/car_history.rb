@@ -1,5 +1,4 @@
 class CarHistory < ActiveRecord::Base
-
   belongs_to :user,
     class_name: 'User',
     primary_key: :id,
@@ -8,7 +7,8 @@ class CarHistory < ActiveRecord::Base
   belongs_to :car,
     class_name: 'Car',
     primary_key: :id,
-    foreign_key: :car_id
+    foreign_key: :car_id,
+    optional: true
 
   before_create :update_previous_car_history
   after_create :update_current_user

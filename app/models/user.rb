@@ -4,7 +4,8 @@ class User < ActiveRecord::Base
   belongs_to :current_car,
     class_name: 'Car',
     primary_key: :id,
-    foreign_key: :car_id
+    foreign_key: :car_id,
+    optional: true
 
   has_many :car_histories,
     class_name: 'CarHistory',
@@ -14,7 +15,8 @@ class User < ActiveRecord::Base
   has_many :cars,
     through: :car_histories
 
-  belongs_to :price_tier
+  belongs_to :price_tier,
+    optional: true
 
   validates :phone_number, :email, :password_digest, presence: true
   validates :phone_number, :email, uniqueness: true

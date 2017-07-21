@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get '/', to: 'ping#root'
+
   post 'login', to: 'authentication#login'
   post 'signup', to: 'users#create'
 

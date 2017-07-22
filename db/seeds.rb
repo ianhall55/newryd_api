@@ -173,7 +173,9 @@
   class_id: @car_class1.id,
   price_tier_id: @price_tier1.id,
   status: 'completed',
-  rental_start_date: 30.days.ago
+  confirmed: true,
+  rental_start_date: 30.days.ago,
+  rental_start_date: 20.days.ago
 )
 
 @car_rental2 = CarRental.create!(
@@ -183,6 +185,7 @@
   class_id: @car_class2.id,
   price_tier_id: @price_tier2.id,
   status: 'confirmed',
+  confirmed: true,
   rental_start_date: 10.days.from_now
 )
 
@@ -192,5 +195,6 @@
   class_id: @car_class3.id,
   price_tier_id: @price_tier3.id,
   status: 'pending',
+  confirmed: false,
   rental_start_date: 20.days.from_now
 )

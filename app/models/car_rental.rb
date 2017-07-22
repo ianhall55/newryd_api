@@ -7,7 +7,7 @@ class CarRental < ActiveRecord::Base
 
   scope :upcoming, ->(now) { where("rental_start_date > ?", now) }
   scope :pending, -> { where(status: 'pending') }
-  scope :confirmed, -> { where(status: 'confirmed') }
+  scope :confirmed, -> { where(confirmed: true) }
 
   belongs_to :user
   belongs_to :car,
@@ -30,6 +30,7 @@ class CarRental < ActiveRecord::Base
 
   def confirm!(car)
     self.car = car
+    self.confirmed = true
     self.status = 'confirmed'
     save!
   end

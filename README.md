@@ -74,7 +74,7 @@ sample response:
 to log user out, remove auth token from local storage and throw away
 
 # User Price Tier
-to update the price tier for a user, returns updated auth_token 
+to update the price tier for a user, returns updated auth_token
 
 type: PUT
 
@@ -380,66 +380,66 @@ params: jwt in auth header
 
 Successful response
 ```json
-{
-  "pending": [
-    {
-      "id": 3,
-      "car": null,
-      "car_type": {
-        "id": 3,
-        "name": "Family",
-        "description": "Large, spacious cars. Great for large groups"
-      },
-      "car_class": {
-        "id": 3,
-        "name": "Sports car",
-        "description": null
-      },
-      "price_tier": {
-        "id": 3,
-        "description": "Tier 1",
-        "start_price": "900.0",
-        "end_price": "1399.0"
-      },
-      "status": "pending",
-      "rental_start_date": "2017-07-28T20:55:51.401Z"
-    }
-  ],
-  "confirmed": [
-    {
+[
+  {
+    "id": 2,
+    "car": {
       "id": 2,
-      "car": {
-        "id": 2,
-        "make": "Toyota",
-        "model": "Corolla",
-        "vin": "67890",
-        "year": "2010",
-        "color": "blue",
-        "license_plate": "xyz890",
-        "mileage": 85000,
-        "type_id": 2
-      },
-      "car_type": {
-        "id": 2,
-        "name": "Adventure",
-        "description": "Perfect car for a weekend getaway"
-      },
-      "car_class": {
-        "id": 2,
-        "name": "Coupe",
-        "description": null
-      },
-      "price_tier": {
-        "id": 2,
-        "description": "Tier 1",
-        "start_price": "750.0",
-        "end_price": "899.0"
-      },
-      "status": "confirmed",
-      "rental_start_date": "2017-07-18T20:55:51.398Z"
-    }
-  ]
-}
+      "make": "Toyota",
+      "model": "Corolla",
+      "vin": "67890",
+      "year": "2010",
+      "color": "blue",
+      "license_plate": "xyz890",
+      "mileage": 85000,
+      "type_id": 2
+    },
+    "car_type": {
+      "id": 2,
+      "name": "Adventure",
+      "description": "Perfect car for a weekend getaway"
+    },
+    "car_class": {
+      "id": 2,
+      "name": "Coupe",
+      "description": null
+    },
+    "price_tier": {
+      "id": 2,
+      "description": "Tier 2",
+      "start_price": "750.0",
+      "end_price": "899.0"
+    },
+    "status": null,
+    "confirmed": true,
+    "rental_start_date": "2017-08-01T23:47:53.524Z",
+    "rental_finish_date": null
+  },
+  {
+    "id": 3,
+    "car": null,
+    "car_type": {
+      "id": 3,
+      "name": "Family",
+      "description": "Large, spacious cars. Great for large groups"
+    },
+    "car_class": {
+      "id": 3,
+      "name": "Sports car",
+      "description": null
+    },
+    "price_tier": {
+      "id": 3,
+      "description": "Tier 3",
+      "start_price": "900.0",
+      "end_price": "1399.0"
+    },
+    "status": null,
+    "confirmed": false,
+    "rental_start_date": "2017-08-11T23:47:53.527Z",
+    "rental_finish_date": null
+  }
+]
 ```
 
 # Confirmed

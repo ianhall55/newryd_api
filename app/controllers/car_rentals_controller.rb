@@ -34,16 +34,10 @@ class CarRentalsController < ApplicationController
   end
 
   def upcoming_rentals_all
-    @pending = CarRental.for_user(current_user.id).pending
-    @confirmed = CarRental.for_user(current_user.id).upcoming(Time.now).confirmed
-    @pending = serialize_rentals(@pending)
-    @confirmed = serialize_rentals(@confirmed)
+    @upcoming_rentals = CarRental.for_user(current_user.id).upcoming(Time.now)
 
-    if @pending.present? || @confirmed.present?
-      render json: {
-        pending: @pending,
-        confirmed: @confirmed
-      }
+    if @upcoming_rentals.present?
+      render json: @upcoming_rentals
     else
       render json: { message: "No upcoming rentals" }
     end
